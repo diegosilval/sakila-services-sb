@@ -46,6 +46,32 @@ public class FilmCategoryPK implements Serializable {
     public void setFilmId(int filmId) {
         this.filmId = filmId;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.categoryId;
+        hash = 89 * hash + this.filmId;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final FilmCategoryPK other = (FilmCategoryPK) obj;
+        if (this.categoryId != other.categoryId) {
+            return false;
+        }
+        return this.filmId == other.filmId;
+    }
     
     
 }

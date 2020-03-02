@@ -37,10 +37,10 @@ public class ApplicationResources extends ResourceConfig {
 
     @PostConstruct
     public void init() {
-        LOGGER.info("Iniciando servicios...");
+        LOGGER.debug("Iniciando servicios...");
         register(ActorEndpoint.class);
         register(FilmEndpoint.class);
-        LOGGER.info(".. servicios iniciados");
+        LOGGER.debug(".. servicios iniciados");
     }
 
 

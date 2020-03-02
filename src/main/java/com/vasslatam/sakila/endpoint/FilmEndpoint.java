@@ -49,7 +49,7 @@ public class FilmEndpoint {
 
     @PostConstruct
     public void init() {
-        LOGGER.info("Iniciando FilmEndpoint [OK]");
+        LOGGER.debug("Iniciando FilmEndpoint [OK]");
     }
 
     @GET

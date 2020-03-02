@@ -16,18 +16,39 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.vasslatam.sakila.service;
-
-import com.vasslatam.sakila.domain.Actor;
-import java.util.List;
+package com.vasslatam.sakila.endpoint.request;
 
 /**
  *
- * @author Diego Silva Limaco <diego.silva at apuntesdejava.com>
+ * @author diego
  */
-public interface ActorService {
+public class ActorRequest {
 
-    List<Actor> findAll();
+    private String firstName;
+    private String lastName;
 
-    Actor create(String firstName, String lastName);
+    public ActorRequest() {
+    }
+
+    public ActorRequest(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 }

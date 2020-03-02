@@ -19,10 +19,13 @@
 package com.vasslatam.sakila.endpoint;
 
 import com.vasslatam.sakila.domain.Actor;
+import com.vasslatam.sakila.endpoint.request.ActorRequest;
 import com.vasslatam.sakila.service.ActorService;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -38,6 +41,7 @@ import org.springframework.stereotype.Component;
  */
 @Path("actor")
 @Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 @Component
 public class ActorEndpoint {
 
@@ -47,13 +51,19 @@ public class ActorEndpoint {
 
     @PostConstruct
     public void init() {
-        LOGGER.info("Iniciando ActorEndpoint [OK]");
+        LOGGER.debug("Iniciando ActorEndpoint [OK]");
     }
 
     @GET
     public Response findAll() {
         List<Actor> actors = actorService.findAll();
         return Response.ok(actors).build();
+    }
+
+    @POST
+    public Response create(ActorRequest request) {
+        Actor actor = actorService.create(request.getFirstName(), request.getLastName());
+        return Response.ok(actor).build();
     }
 
 }
